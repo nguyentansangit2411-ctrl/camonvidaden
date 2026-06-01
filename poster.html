@@ -179,7 +179,7 @@
       </div>
       <div class="max-w-sm mx-auto mb-6">
         <p class="italic text-xs sm:text-sm leading-relaxed opacity-90">
-          "Sự hiện diện của bạn là niềm vui và động lực lớn nhất trong ngày trọng đại này."
+          "Sự hiện diện của <span id="quote-honorific">bạn</span> là niềm vui và động lực lớn nhất trong ngày trọng đại này."
         </p>
       </div>
       <div class="divider"></div>
@@ -220,6 +220,16 @@
           const parts = data.split('|');
           if (parts.length === 2) {
              guestInput.value = (parts[1] + (parts[0] ? ' ' + parts[0] : '')).trim();
+             
+             const honorific = parts[1];
+             const quoteSpan = document.getElementById('quote-honorific');
+             if (quoteSpan) {
+               if (honorific.length > 10) {
+                 quoteSpan.textContent = 'mọi người';
+               } else {
+                 quoteSpan.textContent = honorific.toLowerCase();
+               }
+             }
           }
         } catch (e) { }
       }
