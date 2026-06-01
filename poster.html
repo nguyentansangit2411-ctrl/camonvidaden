@@ -10,8 +10,8 @@
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
-  <!-- html2canvas -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <!-- html2canvas (tạm ẩn) -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script> -->
   <!-- BEGIN: Custom Styling -->
   <style data-purpose="background-texture">
     body {
@@ -219,7 +219,7 @@
           const data = decodeURIComponent(atob(g));
           const parts = data.split('|');
           if (parts.length === 2) {
-             guestInput.value = (parts[1] + (parts[0] ? ' ' + parts[0] : '')).trim();
+             guestInput.value = (parts[1] + (parts[0] ? ' ' + parts[0] : '')).trim().normalize('NFC');
              
              const honorific = parts[1];
              const quoteSpan = document.getElementById('quote-honorific');

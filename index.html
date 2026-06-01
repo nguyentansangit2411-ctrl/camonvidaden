@@ -315,8 +315,8 @@
       const nameInput = document.getElementById('name');
       const honorificInput = document.getElementById('honorific');
 
-      const name = nameInput.value.trim();
-      const honorific = honorificInput.value;
+      const name = nameInput.value.trim().normalize('NFC');
+      const honorific = honorificInput.value.normalize('NFC');
 
       const data = name + '|' + honorific;
       const base64 = btoa(encodeURIComponent(data));
