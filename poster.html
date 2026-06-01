@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -9,7 +10,9 @@
   <!-- Google Fonts: Script and Serif fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
   <!-- html2canvas (tạm ẩn) -->
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script> -->
   <!-- BEGIN: Custom Styling -->
@@ -18,16 +21,19 @@
       background-color: #fcf9f5;
       background-image: url("https://www.transparenttextures.com/patterns/paper.png");
       font-family: 'Montserrat', sans-serif;
-      color: #7a5c48; /* Muted brown/sepia tone */
+      color: #7a5c48;
+      /* Muted brown/sepia tone */
     }
   </style>
   <style data-purpose="typography">
     .font-script {
       font-family: 'Dancing Script', cursive;
     }
+
     .font-serif {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant Garamond', serif;
     }
+
     .text-earthy {
       color: #7a5c48;
     }
@@ -40,6 +46,7 @@
       align-items: center;
       justify-content: center;
     }
+
     .highlight-circle::after {
       content: "";
       position: absolute;
@@ -69,7 +76,7 @@
       margin: 1.5rem auto;
       opacity: 0.4;
     }
-    
+
     /* Button styles */
     .btn-download {
       margin-top: 30px;
@@ -89,10 +96,12 @@
       gap: 10px;
       border-radius: 4px;
     }
+
     .btn-download:hover {
       background: rgba(122, 92, 72, 0.1);
       border-color: #7a5c48;
     }
+
     .btn-download:disabled {
       opacity: 0.5;
       cursor: not-allowed;
@@ -105,6 +114,7 @@
       display: block;
       transition: background 0.3s, border-color 0.3s;
     }
+
     #guest-name:focus {
       background: rgba(122, 92, 72, 0.05);
       border-bottom-color: #7a5c48;
@@ -112,10 +122,13 @@
   </style>
   <!-- END: Custom Styling -->
 </head>
+
 <body class="flex flex-col items-center justify-center min-h-screen p-4">
 
   <!-- BEGIN: Invitation Card Container -->
-  <main id="poster" class="relative w-full max-w-[600px] aspect-[1/1.414] bg-[#fcf9f5] shadow-2xl overflow-hidden p-8 sm:p-12 flex flex-col items-center border border-stone-200" data-purpose="invitation-container">
+  <main id="poster"
+    class="relative w-full max-w-[600px] aspect-[1/1.414] bg-[#fcf9f5] shadow-2xl overflow-hidden p-8 sm:p-12 flex flex-col items-center border border-stone-200"
+    data-purpose="invitation-container">
     <!-- BEGIN: Decorative Floral Corners -->
     <div class="absolute top-0 right-0 w-32 h-48 opacity-40 pointer-events-none transform translate-x-4 -translate-y-4">
       <svg fill="none" stroke="#7a5c48" stroke-width="0.5" viewBox="0 0 100 100">
@@ -124,7 +137,8 @@
         <path d="M70,5 Q50,35 20,25"></path>
       </svg>
     </div>
-    <div class="absolute bottom-0 left-0 w-40 h-60 opacity-40 pointer-events-none transform -translate-x-4 translate-y-4">
+    <div
+      class="absolute bottom-0 left-0 w-40 h-60 opacity-40 pointer-events-none transform -translate-x-4 translate-y-4">
       <svg fill="none" stroke="#7a5c48" stroke-width="0.5" viewBox="0 0 100 150">
         <path d="M10,140 Q30,100 60,110 Q40,140 10,140 M60,110 Q80,80 90,20"></path>
         <path d="M15,130 Q35,90 65,100"></path>
@@ -138,28 +152,62 @@
       <h1 class="font-script text-4xl sm:text-5xl mb-4 text-earthy">Thư mời dự Lễ Tốt Nghiệp</h1>
       <p class="font-serif uppercase tracking-widest text-base sm:text-lg">JUNE 2026</p>
     </header>
-    
+
     <section class="mb-8 text-center px-4 w-full flex flex-col items-center gap-2">
       <p class="font-serif text-sm italic text-earthy">Kính mời:</p>
-      <textarea id="guest-name" rows="1" class="bg-transparent border-0 border-b border-stone-400 border-dashed text-center w-full max-w-[85%] text-lg sm:text-xl font-serif outline-none text-earthy font-medium focus:ring-0 focus:border-stone-500 p-1" placeholder="Nhập tên khách mời..." title="Click để chỉnh tên">Anh / Chị / Bạn</textarea>
+      <textarea id="guest-name" rows="1"
+        class="bg-transparent border-0 border-b border-stone-400 border-dashed text-center w-full max-w-[85%] text-lg sm:text-xl font-serif outline-none text-earthy focus:ring-0 focus:border-stone-500 p-1"
+        placeholder="Nhập tên khách mời..." title="Click để chỉnh tên">Anh / Chị / Bạn</textarea>
     </section>
     <!-- END: Header Section -->
 
     <!-- BEGIN: Calendar Layout -->
     <section class="w-full max-w-xs mb-8 sm:mb-10 text-xs font-light tracking-tighter" data-purpose="calendar-grid">
       <div class="grid grid-cols-7 text-center mb-4 font-normal text-earthy opacity-80">
-        <div class="">SUN</div><div class="">MON</div><div class="">TUE</div><div class="">WED</div><div class="">THU</div><div class="">FRI</div><div class="">SAT</div>
+        <div class="">SUN</div>
+        <div class="">MON</div>
+        <div class="">TUE</div>
+        <div class="">WED</div>
+        <div class="">THU</div>
+        <div class="">FRI</div>
+        <div class="">SAT</div>
       </div>
       <div class="grid grid-cols-7 text-center gap-y-4 text-sm font-serif">
         <div class="text-transparent">0</div>
-        <div class="">1</div><div class="">2</div><div class="">3</div><div class="">4</div><div class="">5</div><div class="">6</div>
-        <div class="">7</div><div class="">8</div><div class="">9</div><div class="">10</div><div class="">11</div><div class="">12</div><div class="">13</div>
-        <div class="">14</div><div class="">15</div><div class="">16</div><div class="">17</div><div class="">18</div><div class="">19</div><div class="">20</div>
-        <div class="">21</div><div class="">22</div><div class="">23</div><div class="">24</div><div class="">25</div>
+        <div class="">1</div>
+        <div class="">2</div>
+        <div class="">3</div>
+        <div class="">4</div>
+        <div class="">5</div>
+        <div class="">6</div>
+        <div class="">7</div>
+        <div class="">8</div>
+        <div class="">9</div>
+        <div class="">10</div>
+        <div class="">11</div>
+        <div class="">12</div>
+        <div class="">13</div>
+        <div class="">14</div>
+        <div class="">15</div>
+        <div class="">16</div>
+        <div class="">17</div>
+        <div class="">18</div>
+        <div class="">19</div>
+        <div class="">20</div>
+        <div class="">21</div>
+        <div class="">22</div>
+        <div class="">23</div>
+        <div class="">24</div>
+        <div class="">25</div>
         <div class="highlight-circle">26</div>
         <div class="">27</div>
-        <div class="">28</div><div class="">29</div><div class="">30</div>
-        <div class="text-transparent">0</div><div class="text-transparent">0</div><div class="text-transparent">0</div><div class="text-transparent">0</div>
+        <div class="">28</div>
+        <div class="">29</div>
+        <div class="">30</div>
+        <div class="text-transparent">0</div>
+        <div class="text-transparent">0</div>
+        <div class="text-transparent">0</div>
+        <div class="text-transparent">0</div>
       </div>
     </section>
     <!-- END: Calendar Layout -->
@@ -179,18 +227,22 @@
       </div>
       <div class="max-w-sm mx-auto mb-6">
         <p class="italic text-xs sm:text-sm leading-relaxed opacity-90">
-          "Sự hiện diện của <span id="quote-honorific">bạn</span> là niềm vui và động lực lớn nhất trong ngày trọng đại này."
+          "Sự hiện diện của <span id="quote-honorific">bạn</span> là niềm vui và động lực lớn nhất trong ngày trọng đại
+          này."
         </p>
       </div>
       <div class="divider"></div>
       <div class="flex items-center justify-center space-x-2 text-earthy">
         <svg class="h-4 w-4 sm:h-5 sm:w-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
+          <path
+            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z">
+          </path>
         </svg>
         <address class="not-italic font-serif text-sm">
           <div class="flex flex-col text-left">
             <span class="font-semibold text-sm sm:text-base">Thu Duc Campus</span>
-            <span class="text-[10px] sm:text-xs opacity-80 mt-0.5">Phân khu Đào tạo E1 Khu Công nghệ cao P. Tăng Nhơn Phú, TP.HCM</span>
+            <span class="text-[10px] sm:text-xs opacity-80 mt-0.5">Phân khu Đào tạo E1 Khu Công nghệ cao P. Tăng Nhơn
+              Phú, TP.HCM</span>
           </div>
         </address>
       </div>
@@ -220,17 +272,17 @@
           const data = decodeURIComponent(atob(g));
           const parts = data.split('|');
           if (parts.length === 2) {
-             guestInput.value = (parts[1] + (parts[0] ? ' ' + parts[0] : '')).trim().normalize('NFC');
-             
-             const honorific = parts[1];
-             const quoteSpan = document.getElementById('quote-honorific');
-             if (quoteSpan) {
-               if (honorific.length > 10) {
-                 quoteSpan.textContent = 'mọi người';
-               } else {
-                 quoteSpan.textContent = honorific.toLowerCase();
-               }
-             }
+            guestInput.value = (parts[1] + (parts[0] ? ' ' + parts[0] : '')).trim().normalize('NFC');
+
+            const honorific = parts[1];
+            const quoteSpan = document.getElementById('quote-honorific');
+            if (quoteSpan) {
+              if (honorific.length > 10) {
+                quoteSpan.textContent = 'mọi người';
+              } else {
+                quoteSpan.textContent = honorific.toLowerCase();
+              }
+            }
           }
         } catch (e) { }
       }
@@ -280,4 +332,5 @@
     });
   </script>
 </body>
+
 </html>
