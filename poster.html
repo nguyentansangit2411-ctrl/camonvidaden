@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thư Mời Lễ Tốt Nghiệp — Sang</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Josefin+Sans:wght@100;200;300;400&display=swap"
+    rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    :root {
+      --gold: #BF9540;
+      --gold-bright: #D4AF55;
+      --gold-pale: #E8D08A;
+      --gold-wash: rgba(191, 149, 64, 0.07);
+      --navy: #0B1826;
+      --navy-soft: #152233;
+      --ivory: #F8F4EB;
+      --ivory-deep: #EFE9D8;
+      --ink: #1A2A3A;
+      --muted: #7A8E9E;
+      --light: #B0C0CC;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #060E17;
+      font-family: 'Josefin Sans', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 56px 20px;
+      gap: 36px;
+    }
+
+    /* ══════════════════════════════
+       POSTER SHELL
+    ══════════════════════════════ */
+    #poster {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      background: var(--ivory);
+      overflow: hidden;
+      box-shadow:
+        0 0 0 1px rgba(191, 149, 64, 0.2),
+        0 2px 4px rgba(0, 0, 0, 0.3),
+        0 30px 60px rgba(0, 0, 0, 0.6),
+        0 60px 100px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Kết cấu giấy */
+    #poster::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ══════════════════════════════
+       VIỀN KHUNG ĐÔI CAO CẤP
+    ══════════════════════════════ */
+    .frame-outer {
+      position: absolute;
+      inset: 14px;
+      border: 1px solid rgba(191, 149, 64, 0.5);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .frame-inner {
+      position: absolute;
+      inset: 20px;
+      border: 1px solid rgba(191, 149, 64, 0.18);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* Góc trang trí — 4 góc */
+    .corner {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      z-index: 11;
+      pointer-events: none;
+    }
+
+    .corner svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .corner.tl {
+      top: 8px;
+      left: 8px;
+    }
+
+    .corner.tr {
+      top: 8px;
+      right: 8px;
+      transform: scaleX(-1);
+    }
+
+    .corner.bl {
+      bottom: 8px;
+      left: 8px;
+      transform: scaleY(-1);
+    }
+
+    .corner.br {
+      bottom: 8px;
+      right: 8px;
+      transform: scale(-1);
+    }
+
+    /* ══════════════════════════════
+       PHẦN ĐẦU — DARK HEADER
+    ══════════════════════════════ */
+    .header {
+      position: relative;
+      z-index: 1;
+      background: var(--navy);
+      padding: 36px 60px 32px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* Ánh sáng vàng mờ phía sau title */
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      height: 160px;
+      background: radial-gradient(ellipse, rgba(191, 149, 64, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Đường kẻ vàng đáy */
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 40px;
+      right: 40px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-bright), transparent);
+    }
+
+    .header-eyebrow {
+      font-size: 9px;
+      font-weight: 200;
+      letter-spacing: 7px;
+      text-transform: uppercase;
+      color: var(--gold-pale);
+      opacity: 0.8;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 50px;
+      letter-spacing: 4px;
+      line-height: 1;
+      color: var(--ivory);
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-title em {
+      display: block;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 18px;
+      letter-spacing: 3px;
+      color: var(--gold-bright);
+      margin-top: 10px;
+      text-transform: none;
+    }
+
+    /* ══════════════════════════════
+       THÂN POSTER
+    ══════════════════════════════ */
+    .body {
+      position: relative;
+      z-index: 1;
+      padding: 40px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    /* ── Phân cách dạng nguyệt quế ── */
+    .divider {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 28px 0;
+    }
+
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(191, 149, 64, 0.35));
+    }
+
+    .divider-line.r {
+      background: linear-gradient(90deg, rgba(191, 149, 64, 0.35), transparent);
+    }
+
+    /* ── Tên chủ nhân — HERO ── */
+    .protagonist {
+      text-align: center;
+      width: 100%;
+    }
+
+    .protagonist-label {
+      font-size: 9px;
+      font-weight: 300;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .protagonist-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 46px;
+      font-weight: 600;
+      letter-spacing: 6px;
+      color: var(--ink);
+      text-transform: uppercase;
+      line-height: 1;
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Gạch dưới vàng trang trí */
+    .protagonist-name::after {
+      content: '';
+      display: block;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin-top: 10px;
+    }
+
+    /* ── Lời mời ── */
+    .invite-block {
+      text-align: center;
+      width: 100%;
+    }
+
+    .invite-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    .guest-name-input {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 500;
+      font-style: italic;
+      color: var(--gold);
+      text-align: center;
+      border: none;
+      border-bottom: 1px dashed rgba(191, 149, 64, 0.3);
+      background: transparent;
+      width: 100%;
+      padding: 4px 0 8px;
+      outline: none;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .guest-name-input:focus {
+      border-bottom-color: var(--gold);
+      background: var(--gold-wash);
+    }
+
+    /* ── Hộp thông tin chi tiết ── */
+    .details-wrap {
+      width: 100%;
+      border: 1px solid rgba(191, 149, 64, 0.2);
+      background: rgba(191, 149, 64, 0.025);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .detail-cell {
+      padding: 22px 20px;
+      text-align: center;
+    }
+
+    .detail-cell:first-child {
+      border-right: 1px solid rgba(191, 149, 64, 0.2);
+    }
+
+    .dc-label {
+      font-size: 8.5px;
+      font-weight: 300;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 9px;
+    }
+
+    .dc-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.25;
+    }
+
+    .dc-sub {
+      font-size: 10.5px;
+      font-weight: 300;
+      color: var(--muted);
+      margin-top: 5px;
+      line-height: 1.5;
+      letter-spacing: 0.3px;
+    }
+
+    /* ══════════════════════════════
+       CHÂN POSTER
+    ══════════════════════════════ */
+    .footer {
+      position: relative;
+      z-index: 1;
+      background: var(--navy);
+      padding: 26px 60px 28px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 40px;
+      right: 40px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-bright), transparent);
+    }
+
+    .footer::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 100%, rgba(191, 149, 64, 0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .footer-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 14.5px;
+      font-weight: 300;
+      color: rgba(232, 208, 138, 0.65);
+      line-height: 1.75;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-quote span {
+      display: block;
+      font-family: 'Josefin Sans', sans-serif;
+      font-style: normal;
+      font-size: 8px;
+      font-weight: 200;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: rgba(191, 149, 64, 0.45);
+      margin-top: 12px;
+    }
+
+    /* ══════════════════════════════
+       NÚT TẢI ẢNH
+    ══════════════════════════════ */
+    .btn-download {
+      padding: 14px 40px;
+      background: transparent;
+      border: 1px solid rgba(191, 149, 64, 0.6);
+      color: var(--gold-pale);
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.35s ease;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-download::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(191, 149, 64, 0.08), transparent);
+      opacity: 0;
+      transition: opacity 0.35s;
+    }
+
+    .btn-download:hover {
+      border-color: var(--gold-bright);
+      color: var(--gold-bright);
+      box-shadow: 0 0 20px rgba(191, 149, 64, 0.15);
+    }
+
+    .btn-download:hover::before {
+      opacity: 1;
+    }
+
+    .btn-download:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    /* ══════════════════════════════
+       ANIMATION
+    ══════════════════════════════ */
+    @keyframes riseUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    #poster {
+      animation: riseUp 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .btn-download {
+      animation: riseUp 1s 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    @media (max-width: 480px) {
+      .header {
+        padding: 28px 36px 24px;
+      }
+
+      .body {
+        padding: 32px 36px;
+      }
+
+      .footer {
+        padding: 22px 36px 24px;
+      }
+
+      .header-title {
+        font-size: 38px;
+      }
+
+      .protagonist-name {
+        font-size: 36px;
+      }
+
+      .details-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .detail-cell:first-child {
+        border-right: none;
+        border-bottom: 1px solid rgba(191, 149, 64, 0.2);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="poster">
+
+    <!-- Khung viền đôi -->
+    <div class="frame-outer"></div>
+    <div class="frame-inner"></div>
+
+    <!-- Họa tiết 4 góc -->
+    <div class="corner tl">
+      <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 20 L2 2 L20 2" stroke="#BF9540" stroke-width="1.2" fill="none" />
+        <path d="M2 10 L6 10 M10 2 L10 6" stroke="#BF9540" stroke-width="0.7" opacity="0.5" />
+        <circle cx="2" cy="2" r="1.5" fill="#BF9540" opacity="0.6" />
+      </svg>
+    </div>
+    <div class="corner tr">
+      <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 20 L2 2 L20 2" stroke="#BF9540" stroke-width="1.2" fill="none" />
+        <path d="M2 10 L6 10 M10 2 L10 6" stroke="#BF9540" stroke-width="0.7" opacity="0.5" />
+        <circle cx="2" cy="2" r="1.5" fill="#BF9540" opacity="0.6" />
+      </svg>
+    </div>
+    <div class="corner bl">
+      <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 20 L2 2 L20 2" stroke="#BF9540" stroke-width="1.2" fill="none" />
+        <path d="M2 10 L6 10 M10 2 L10 6" stroke="#BF9540" stroke-width="0.7" opacity="0.5" />
+        <circle cx="2" cy="2" r="1.5" fill="#BF9540" opacity="0.6" />
+      </svg>
+    </div>
+    <div class="corner br">
+      <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 20 L2 2 L20 2" stroke="#BF9540" stroke-width="1.2" fill="none" />
+        <path d="M2 10 L6 10 M10 2 L10 6" stroke="#BF9540" stroke-width="0.7" opacity="0.5" />
+        <circle cx="2" cy="2" r="1.5" fill="#BF9540" opacity="0.6" />
+      </svg>
+    </div>
+
+    <!-- ĐẦU POSTER -->
+    <div class="header">
+      <p class="header-eyebrow">Trân trọng kính mời</p>
+      <h1 class="header-title">
+        Lễ Tốt Nghiệp
+        <em>Graduation Ceremony · 2026</em>
+      </h1>
+    </div>
+
+    <!-- THÂN POSTER -->
+    <div class="body">
+
+      <!-- Khách mời — lên trên -->
+      <div class="invite-block">
+        <p class="invite-sub">Kính mời</p>
+        <input type="text" id="guest-name" class="guest-name-input" value="Anh / Chị / Bạn"
+          placeholder="Nhập tên khách mời..." title="Click để chỉnh tên" />
+        <p class="invite-sub" style="margin-top:12px;">đến tham dự và chung vui trong ngày lễ tốt nghiệp của</p>
+      </div>
+
+      <!-- Phân cách -->
+      <div class="divider">
+        <div class="divider-line"></div>
+        <svg width="36" height="20" viewBox="0 0 36 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 10 Q10 6 6 7 Q9 4 13 6" stroke="#BF9540" stroke-width="0.8" fill="rgba(191,149,64,0.12)" />
+          <path d="M14 10 Q10 9 7 12 Q10 11 13 13" stroke="#BF9540" stroke-width="0.8" fill="rgba(191,149,64,0.12)" />
+          <path d="M14 10 Q11 10 8 10" stroke="#BF9540" stroke-width="0.6" opacity="0.5" />
+          <path d="M22 10 Q26 6 30 7 Q27 4 23 6" stroke="#BF9540" stroke-width="0.8" fill="rgba(191,149,64,0.12)" />
+          <path d="M22 10 Q26 9 29 12 Q26 11 23 13" stroke="#BF9540" stroke-width="0.8" fill="rgba(191,149,64,0.12)" />
+          <path d="M22 10 Q25 10 28 10" stroke="#BF9540" stroke-width="0.6" opacity="0.5" />
+          <circle cx="18" cy="10" r="2.5" fill="none" stroke="#BF9540" stroke-width="0.8" opacity="0.7" />
+          <circle cx="18" cy="10" r="1" fill="#BF9540" opacity="0.5" />
+        </svg>
+        <div class="divider-line r"></div>
+      </div>
+
+      <!-- Tên chủ nhân — hero element -->
+      <div class="protagonist">
+        <div class="protagonist-name">Sang</div>
+      </div>
+
+      <!-- Phân cách mảnh -->
+      <div class="divider">
+        <div class="divider-line"></div>
+        <svg width="20" height="8" viewBox="0 0 20 8" fill="none">
+          <circle cx="10" cy="4" r="1.8" fill="#BF9540" opacity="0.55" />
+          <circle cx="3" cy="4" r="1.1" fill="#BF9540" opacity="0.3" />
+          <circle cx="17" cy="4" r="1.1" fill="#BF9540" opacity="0.3" />
+        </svg>
+        <div class="divider-line r"></div>
+      </div>
+
+      <!-- Chi tiết sự kiện -->
+      <div class="details-wrap">
+        <div class="detail-cell">
+          <p class="dc-label">Thời gian</p>
+          <p class="dc-value">09:00</p>
+          <p class="dc-sub">Thứ Sáu<br>26 · 06 · 2026</p>
+        </div>
+        <div class="detail-cell">
+          <p class="dc-label">Địa điểm</p>
+          <p class="dc-value">Thu Duc Campus</p>
+          <p class="dc-sub">Phân khu Đào tạo E1<br>Khu Công nghệ cao<br>P. Tăng Nhơn Phú, TP.HCM</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CHÂN POSTER -->
+    <div class="footer">
+      <p class="footer-quote">
+        Sự hiện diện của mọi người<br>là niềm vinh hạnh lớn nhất của Sang.
+        <span>With love &amp; gratitude</span>
+      </p>
+    </div>
+
+  </div>
+
+  <!-- NÚT TẢI -->
+  <button id="downloadBtn" class="btn-download">
+    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 16 16">
+      <path
+        d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+      <path
+        d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+    </svg>
+    Lưu thư mời
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const g = urlParams.get('g');
+      const guestInput = document.getElementById('guest-name');
+
+      if (g) {
+        try {
+          const data = decodeURIComponent(atob(g));
+          const parts = data.split('|');
+          if (parts.length === 2) guestInput.value = parts[1] + ' ' + parts[0];
+        } catch (e) { }
+      }
+
+      document.getElementById('downloadBtn').addEventListener('click', () => {
+        const btn = document.getElementById('downloadBtn');
+        const poster = document.getElementById('poster');
+        const origBorder = guestInput.style.borderBottom;
+
+        btn.textContent = 'Đang xử lý...';
+        btn.disabled = true;
+        guestInput.style.borderBottom = 'none';
+
+        // Ẩn khung & góc trang trí (chúng là position:absolute, html2canvas vẫn render)
+        html2canvas(poster, {
+          scale: 3,
+          useCORS: true,
+          backgroundColor: '#F8F4EB',
+          logging: false
+        }).then(canvas => {
+          guestInput.style.borderBottom = origBorder;
+          const link = document.createElement('a');
+          link.href = canvas.toDataURL('image/png');
+          const safeName = guestInput.value
+            .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+            .replace(/\s+/g, '_');
+          link.download = `ThuMoi_TotNghiep_${safeName}.png`;
+          link.click();
+          btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 16 16"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg> Lưu thư mời`;
+          btn.disabled = false;
+        }).catch(() => {
+          guestInput.style.borderBottom = origBorder;
+          alert('Có lỗi khi lưu ảnh. Vui lòng thử lại!');
+          btn.textContent = 'Lưu thư mời';
+          btn.disabled = false;
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
