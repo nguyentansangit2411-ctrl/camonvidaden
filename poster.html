@@ -269,8 +269,7 @@
 
       if (g) {
         try {
-          const bytes2 = Uint8Array.from(atob(g), c => c.charCodeAt(0));
-          const data = new TextDecoder().decode(bytes2);
+          const data = decodeURIComponent(escape(atob(decodeURIComponent(g))));
           const parts = data.split('|');
           if (parts.length === 2) {
             guestInput.value = (parts[1] + (parts[0] ? ' ' + parts[0] : '')).trim().normalize('NFC');

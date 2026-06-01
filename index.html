@@ -318,8 +318,7 @@
       const honorific = honorificInput.value.normalize('NFC');
 
       const data = name + '|' + honorific;
-      const bytes = new TextEncoder().encode(data);
-      const base64 = btoa(String.fromCharCode(...bytes));
+      const base64 = btoa(unescape(encodeURIComponent(data)));
 
       let basePath = window.location.origin + window.location.pathname.replace('index.html', '').replace(/\/$/, '');
       const link = basePath + '/poster.html?g=' + encodeURIComponent(base64);
