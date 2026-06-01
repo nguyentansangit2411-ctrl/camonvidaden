@@ -1,637 +1,209 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thư Mời Lễ Tốt Nghiệp — Sang</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Josefin+Sans:wght@100;200;300;400&display=swap"
-    rel="stylesheet">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Thư mời Lễ Tốt Nghiệp</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <!-- Google Fonts: Script and Serif fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+  <!-- html2canvas -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <style>
-    :root {
-      --gold: #BF9540;
-      --gold-bright: #D4AF55;
-      --gold-pale: #E8D08A;
-      --gold-wash: rgba(191, 149, 64, 0.07);
-      --navy: #0B1826;
-      --navy-soft: #152233;
-      --ivory: #F8F4EB;
-      --ivory-deep: #EFE9D8;
-      --ink: #1A2A3A;
-      --muted: #7A8E9E;
-      --light: #B0C0CC;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+  <!-- BEGIN: Custom Styling -->
+  <style data-purpose="background-texture">
     body {
-      background: #060E17;
-      font-family: 'Josefin Sans', sans-serif;
-      display: flex;
-      flex-direction: column;
+      background-color: #fcf9f5;
+      background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+      font-family: 'Montserrat', sans-serif;
+      color: #7a5c48; /* Muted brown/sepia tone */
+    }
+  </style>
+  <style data-purpose="typography">
+    .font-script {
+      font-family: 'Dancing Script', cursive;
+    }
+    .font-serif {
+      font-family: 'Playfair Display', serif;
+    }
+    .text-earthy {
+      color: #7a5c48;
+    }
+  </style>
+  <style data-purpose="decorative-elements">
+    /* Hand-drawn circle effect for the calendar date */
+    .highlight-circle {
+      position: relative;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
-      padding: 56px 20px;
-      gap: 36px;
+    }
+    .highlight-circle::after {
+      content: "";
+      position: absolute;
+      width: 140%;
+      height: 140%;
+      border: 1px solid #7a5c48;
+      border-radius: 48% 52% 55% 45% / 45% 48% 52% 55%;
+      transform: rotate(-5deg);
+      opacity: 0.6;
     }
 
-    /* ══════════════════════════════
-       POSTER SHELL
-    ══════════════════════════════ */
-    #poster {
+    /* Hand-drawn swirl/loop decoration */
+    .swirl-decoration {
+      width: 100px;
+      height: 40px;
+      border-bottom: 2px solid #7a5c48;
+      border-radius: 50%;
       position: relative;
-      width: 100%;
-      max-width: 500px;
-      background: var(--ivory);
-      overflow: hidden;
-      box-shadow:
-        0 0 0 1px rgba(191, 149, 64, 0.2),
-        0 2px 4px rgba(0, 0, 0, 0.3),
-        0 30px 60px rgba(0, 0, 0, 0.6),
-        0 60px 100px rgba(0, 0, 0, 0.4);
+      opacity: 0.4;
     }
 
-    /* Kết cấu giấy */
-    #poster::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* ══════════════════════════════
-       VIỀN KHUNG ĐÔI CAO CẤP
-    ══════════════════════════════ */
-    .frame-outer {
-      position: absolute;
-      inset: 14px;
-      border: 1px solid rgba(191, 149, 64, 0.5);
-      pointer-events: none;
-      z-index: 10;
-    }
-
-    .frame-inner {
-      position: absolute;
-      inset: 20px;
-      border: 1px solid rgba(191, 149, 64, 0.18);
-      pointer-events: none;
-      z-index: 10;
-    }
-
-    /* Góc trang trí — 4 góc */
-    .corner {
-      position: absolute;
-      width: 22px;
-      height: 22px;
-      z-index: 11;
-      pointer-events: none;
-    }
-
-    .corner svg {
-      width: 100%;
-      height: 100%;
-    }
-
-    .corner.tl {
-      top: 8px;
-      left: 8px;
-    }
-
-    .corner.tr {
-      top: 8px;
-      right: 8px;
-      transform: scaleX(-1);
-    }
-
-    .corner.bl {
-      bottom: 8px;
-      left: 8px;
-      transform: scaleY(-1);
-    }
-
-    .corner.br {
-      bottom: 8px;
-      right: 8px;
-      transform: scale(-1);
-    }
-
-    /* ══════════════════════════════
-       PHẦN ĐẦU — DARK HEADER
-    ══════════════════════════════ */
-    .header {
-      position: relative;
-      z-index: 1;
-      background: var(--navy);
-      padding: 36px 60px 32px;
-      text-align: center;
-      overflow: hidden;
-    }
-
-    /* Ánh sáng vàng mờ phía sau title */
-    .header::before {
-      content: '';
-      position: absolute;
-      top: -40px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 300px;
-      height: 160px;
-      background: radial-gradient(ellipse, rgba(191, 149, 64, 0.12) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    /* Đường kẻ vàng đáy */
-    .header::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 40px;
-      right: 40px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold-bright), transparent);
-    }
-
-    .header-eyebrow {
-      font-size: 9px;
-      font-weight: 200;
-      letter-spacing: 7px;
-      text-transform: uppercase;
-      color: var(--gold-pale);
-      opacity: 0.8;
-      margin-bottom: 18px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .header-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 400;
-      font-size: 50px;
-      letter-spacing: 4px;
-      line-height: 1;
-      color: var(--ivory);
-      text-transform: uppercase;
-      position: relative;
-      z-index: 1;
-    }
-
-    .header-title em {
-      display: block;
-      font-style: italic;
-      font-weight: 300;
-      font-size: 18px;
-      letter-spacing: 3px;
-      color: var(--gold-bright);
-      margin-top: 10px;
-      text-transform: none;
-    }
-
-    /* ══════════════════════════════
-       THÂN POSTER
-    ══════════════════════════════ */
-    .body {
-      position: relative;
-      z-index: 1;
-      padding: 40px 60px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0;
-    }
-
-    /* ── Phân cách dạng nguyệt quế ── */
+    /* Simple divider line */
     .divider {
-      width: 100%;
+      width: 80px;
+      height: 1px;
+      background-color: #7a5c48;
+      margin: 1.5rem auto;
+      opacity: 0.4;
+    }
+    
+    /* Button styles */
+    .btn-download {
+      margin-top: 30px;
+      padding: 12px 30px;
+      background: transparent;
+      border: 1px solid rgba(122, 92, 72, 0.6);
+      color: #7a5c48;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
       display: flex;
       align-items: center;
-      gap: 14px;
-      margin: 28px 0;
+      gap: 10px;
+      border-radius: 4px;
+    }
+    .btn-download:hover {
+      background: rgba(122, 92, 72, 0.1);
+      border-color: #7a5c48;
+    }
+    .btn-download:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
     }
 
-    .divider-line {
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(191, 149, 64, 0.35));
-    }
-
-    .divider-line.r {
-      background: linear-gradient(90deg, rgba(191, 149, 64, 0.35), transparent);
-    }
-
-    /* ── Tên chủ nhân — HERO ── */
-    .protagonist {
-      text-align: center;
-      width: 100%;
-    }
-
-    .protagonist-label {
-      font-size: 9px;
-      font-weight: 300;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
-
-    .protagonist-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 46px;
-      font-weight: 600;
-      letter-spacing: 6px;
-      color: var(--ink);
-      text-transform: uppercase;
-      line-height: 1;
-      position: relative;
-      display: inline-block;
-    }
-
-    /* Gạch dưới vàng trang trí */
-    .protagonist-name::after {
-      content: '';
-      display: block;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      margin-top: 10px;
-    }
-
-    /* ── Lời mời ── */
-    .invite-block {
-      text-align: center;
-      width: 100%;
-    }
-
-    .invite-sub {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 15px;
-      color: var(--muted);
-      margin-bottom: 14px;
-      line-height: 1.5;
-    }
-
-    .guest-name-input {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 26px;
-      font-weight: 500;
-      font-style: italic;
-      color: var(--gold);
-      text-align: center;
-      border: none;
-      border-bottom: 1px dashed rgba(191, 149, 64, 0.3);
-      background: transparent;
-      width: 100%;
-      padding: 4px 0 8px;
-      outline: none;
-      transition: border-color 0.3s, background 0.3s;
+    #guest-name {
       resize: none;
       overflow: hidden;
       line-height: 1.3;
       display: block;
+      transition: background 0.3s, border-color 0.3s;
     }
-
-    .guest-name-input:focus {
-      border-bottom-color: var(--gold);
-      background: var(--gold-wash);
-    }
-
-    /* ── Hộp thông tin chi tiết ── */
-    .details-wrap {
-      width: 100%;
-      border: 1px solid rgba(191, 149, 64, 0.2);
-      background: rgba(191, 149, 64, 0.025);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .detail-cell {
-      padding: 22px 20px;
-      text-align: center;
-    }
-
-    .detail-cell:first-child {
-      border-right: 1px solid rgba(191, 149, 64, 0.2);
-    }
-
-    .dc-label {
-      font-size: 8.5px;
-      font-weight: 300;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 9px;
-    }
-
-    .dc-value {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--ink);
-      line-height: 1.25;
-    }
-
-    .dc-sub {
-      font-size: 10.5px;
-      font-weight: 300;
-      color: var(--muted);
-      margin-top: 5px;
-      line-height: 1.5;
-      letter-spacing: 0.3px;
-    }
-
-    /* ══════════════════════════════
-       CHÂN POSTER
-    ══════════════════════════════ */
-    .footer {
-      position: relative;
-      z-index: 1;
-      background: var(--navy);
-      padding: 26px 60px 28px;
-      text-align: center;
-      overflow: hidden;
-    }
-
-    .footer::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 40px;
-      right: 40px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold-bright), transparent);
-    }
-
-    .footer::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 50% 100%, rgba(191, 149, 64, 0.07) 0%, transparent 65%);
-      pointer-events: none;
-    }
-
-    .footer-quote {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 14.5px;
-      font-weight: 300;
-      color: rgba(232, 208, 138, 0.65);
-      line-height: 1.75;
-      position: relative;
-      z-index: 1;
-    }
-
-    .footer-quote span {
-      display: block;
-      font-family: 'Josefin Sans', sans-serif;
-      font-style: normal;
-      font-size: 8px;
-      font-weight: 200;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      color: rgba(191, 149, 64, 0.45);
-      margin-top: 12px;
-    }
-
-    /* ══════════════════════════════
-       NÚT TẢI ẢNH
-    ══════════════════════════════ */
-    .btn-download {
-      padding: 14px 40px;
-      background: transparent;
-      border: 1px solid rgba(191, 149, 64, 0.6);
-      color: var(--gold-pale);
-      font-family: 'Josefin Sans', sans-serif;
-      font-size: 10px;
-      font-weight: 300;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all 0.35s ease;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn-download::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(191, 149, 64, 0.08), transparent);
-      opacity: 0;
-      transition: opacity 0.35s;
-    }
-
-    .btn-download:hover {
-      border-color: var(--gold-bright);
-      color: var(--gold-bright);
-      box-shadow: 0 0 20px rgba(191, 149, 64, 0.15);
-    }
-
-    .btn-download:hover::before {
-      opacity: 1;
-    }
-
-    .btn-download:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
-
-    /* ══════════════════════════════
-       ANIMATION
-    ══════════════════════════════ */
-    @keyframes riseUp {
-      from {
-        opacity: 0;
-        transform: translateY(28px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    #poster {
-      animation: riseUp 1s cubic-bezier(0.16, 1, 0.3, 1) both;
-    }
-
-    .btn-download {
-      animation: riseUp 1s 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
-    }
-
-    @media (max-width: 480px) {
-      .header {
-        padding: 28px 36px 24px;
-      }
-
-      .body {
-        padding: 32px 36px;
-      }
-
-      .footer {
-        padding: 22px 36px 24px;
-      }
-
-      .header-title {
-        font-size: 38px;
-      }
-
-      .protagonist-name {
-        font-size: 36px;
-      }
-
-      .details-wrap {
-        grid-template-columns: 1fr;
-      }
-
-      .detail-cell:first-child {
-        border-right: none;
-        border-bottom: 1px solid rgba(191, 149, 64, 0.2);
-      }
+    #guest-name:focus {
+      background: rgba(122, 92, 72, 0.05);
+      border-bottom-color: #7a5c48;
     }
   </style>
+  <!-- END: Custom Styling -->
 </head>
+<body class="flex flex-col items-center justify-center min-h-screen p-4">
 
-<body>
-
-  <div id="poster">
-
-    <!-- Khung viền đôi -->
-    <div class="frame-outer"></div>
-    <div class="frame-inner"></div>
-
-    <!-- Họa tiết 4 góc -->
-    <div class="corner tl">
-      <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2 20 L2 2 L20 2" stroke="#BF9540" stroke-width="1.2" fill="none" />
-        <path d="M2 10 L6 10 M10 2 L10 6" stroke="#BF9540" stroke-width="0.7" opacity="0.5" />
-        <circle cx="2" cy="2" r="1.5" fill="#BF9540" opacity="0.6" />
+  <!-- BEGIN: Invitation Card Container -->
+  <main id="poster" class="relative w-full max-w-[600px] aspect-[1/1.414] bg-[#fcf9f5] shadow-2xl overflow-hidden p-8 sm:p-12 flex flex-col items-center border border-stone-200" data-purpose="invitation-container">
+    <!-- BEGIN: Decorative Floral Corners -->
+    <div class="absolute top-0 right-0 w-32 h-48 opacity-40 pointer-events-none transform translate-x-4 -translate-y-4">
+      <svg fill="none" stroke="#7a5c48" stroke-width="0.5" viewBox="0 0 100 100">
+        <path d="M90,10 Q70,40 40,30 Q60,10 90,10 M40,30 Q20,60 10,90"></path>
+        <path d="M85,15 Q65,45 35,35"></path>
+        <path d="M70,5 Q50,35 20,25"></path>
       </svg>
     </div>
-    <div class="corner tr">
-      <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2 20 L2 2 L20 2" stroke="#BF9540" stroke-width="1.2" fill="none" />
-        <path d="M2 10 L6 10 M10 2 L10 6" stroke="#BF9540" stroke-width="0.7" opacity="0.5" />
-        <circle cx="2" cy="2" r="1.5" fill="#BF9540" opacity="0.6" />
+    <div class="absolute bottom-0 left-0 w-40 h-60 opacity-40 pointer-events-none transform -translate-x-4 translate-y-4">
+      <svg fill="none" stroke="#7a5c48" stroke-width="0.5" viewBox="0 0 100 150">
+        <path d="M10,140 Q30,100 60,110 Q40,140 10,140 M60,110 Q80,80 90,20"></path>
+        <path d="M15,130 Q35,90 65,100"></path>
+        <path d="M30,145 Q50,115 80,125"></path>
       </svg>
     </div>
-    <div class="corner bl">
-      <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2 20 L2 2 L20 2" stroke="#BF9540" stroke-width="1.2" fill="none" />
-        <path d="M2 10 L6 10 M10 2 L10 6" stroke="#BF9540" stroke-width="0.7" opacity="0.5" />
-        <circle cx="2" cy="2" r="1.5" fill="#BF9540" opacity="0.6" />
-      </svg>
-    </div>
-    <div class="corner br">
-      <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2 20 L2 2 L20 2" stroke="#BF9540" stroke-width="1.2" fill="none" />
-        <path d="M2 10 L6 10 M10 2 L10 6" stroke="#BF9540" stroke-width="0.7" opacity="0.5" />
-        <circle cx="2" cy="2" r="1.5" fill="#BF9540" opacity="0.6" />
-      </svg>
-    </div>
+    <!-- END: Decorative Floral Corners -->
 
-    <!-- ĐẦU POSTER -->
-    <div class="header">
-      <p class="header-eyebrow">Trân trọng kính mời</p>
-      <h1 class="header-title">
-        Lễ Tốt Nghiệp
-        <em>Graduation Ceremony · 2026</em>
-      </h1>
-    </div>
+    <!-- BEGIN: Header Section -->
+    <header class="text-center z-10 mt-6 sm:mt-8 mb-8 sm:mb-12">
+      <h1 class="font-script text-4xl sm:text-5xl mb-4 text-earthy">Thư mời dự Lễ Tốt Nghiệp</h1>
+      <p class="font-serif uppercase tracking-widest text-base sm:text-lg">JUNE 2026</p>
+    </header>
+    
+    <section class="mb-8 text-center px-4 w-full flex flex-col items-center gap-2">
+      <p class="font-serif text-sm italic text-earthy">Kính mời:</p>
+      <textarea id="guest-name" rows="1" class="bg-transparent border-0 border-b border-stone-400 border-dashed text-center w-full max-w-[85%] text-lg sm:text-xl font-serif outline-none text-earthy font-medium focus:ring-0 focus:border-stone-500 p-1" placeholder="Nhập tên khách mời..." title="Click để chỉnh tên">Anh / Chị / Bạn</textarea>
+    </section>
+    <!-- END: Header Section -->
 
-    <!-- THÂN POSTER -->
-    <div class="body">
-
-      <!-- Khách mời — lên trên -->
-      <div class="invite-block" style="margin-bottom: 8px;">
-        <p class="invite-sub">Kính mời</p>
-        <textarea id="guest-name" class="guest-name-input" rows="1"
-          placeholder="Nhập tên khách mời..." title="Click để chỉnh tên">Anh / Chị / Bạn</textarea>
+    <!-- BEGIN: Calendar Layout -->
+    <section class="w-full max-w-xs mb-8 sm:mb-10 text-xs font-light tracking-tighter" data-purpose="calendar-grid">
+      <div class="grid grid-cols-7 text-center mb-4 font-normal text-earthy opacity-80">
+        <div class="">SUN</div><div class="">MON</div><div class="">TUE</div><div class="">WED</div><div class="">THU</div><div class="">FRI</div><div class="">SAT</div>
       </div>
+      <div class="grid grid-cols-7 text-center gap-y-4 text-sm font-serif">
+        <div class="text-transparent">0</div>
+        <div class="">1</div><div class="">2</div><div class="">3</div><div class="">4</div><div class="">5</div><div class="">6</div>
+        <div class="">7</div><div class="">8</div><div class="">9</div><div class="">10</div><div class="">11</div><div class="">12</div><div class="">13</div>
+        <div class="">14</div><div class="">15</div><div class="">16</div><div class="">17</div><div class="">18</div><div class="">19</div><div class="">20</div>
+        <div class="">21</div><div class="">22</div><div class="">23</div><div class="">24</div><div class="">25</div>
+        <div class="highlight-circle">26</div>
+        <div class="">27</div>
+        <div class="">28</div><div class="">29</div><div class="">30</div>
+        <div class="text-transparent">0</div><div class="text-transparent">0</div><div class="text-transparent">0</div><div class="text-transparent">0</div>
+      </div>
+    </section>
+    <!-- END: Calendar Layout -->
 
-      <!-- Cầu nối ✦ -->
-      <div
-        style="text-align:center; padding: 10px 0 6px; color: #BF9540; font-size: 11px; letter-spacing: 8px; opacity: 0.7;">
-        ✦ ✦ ✦</div>
-
-      <!-- Phân cách cành nguyệt quế — nét dày hơn -->
-      <div class="divider" style="margin: 10px 0 16px;">
-        <div class="divider-line"></div>
-        <svg width="44" height="24" viewBox="0 0 44 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M17 12 Q12 7 7 8 Q11 4 16 7" stroke="#BF9540" stroke-width="1.2" fill="rgba(191,149,64,0.15)" />
-          <path d="M17 12 Q12 11 8 15 Q12 13 16 16" stroke="#BF9540" stroke-width="1.2" fill="rgba(191,149,64,0.15)" />
-          <path d="M17 12 Q13 12 9 12" stroke="#BF9540" stroke-width="0.9" opacity="0.55" />
-          <path d="M27 12 Q32 7 37 8 Q33 4 28 7" stroke="#BF9540" stroke-width="1.2" fill="rgba(191,149,64,0.15)" />
-          <path d="M27 12 Q32 11 36 15 Q32 13 28 16" stroke="#BF9540" stroke-width="1.2" fill="rgba(191,149,64,0.15)" />
-          <path d="M27 12 Q31 12 35 12" stroke="#BF9540" stroke-width="0.9" opacity="0.55" />
-          <circle cx="22" cy="12" r="3" fill="none" stroke="#BF9540" stroke-width="1.1" opacity="0.75" />
-          <circle cx="22" cy="12" r="1.2" fill="#BF9540" opacity="0.55" />
+    <!-- BEGIN: Event Details -->
+    <section class="text-center z-10 w-full px-4 mt-auto">
+      <!-- Swirl Decoration -->
+      <div class="flex justify-end mr-12 mb-2">
+        <svg class="w-16 h-8 opacity-40" fill="none" stroke="#7a5c48" stroke-width="1.5" viewBox="0 0 100 40">
+          <path d="M10,20 C30,10 40,40 60,20 C80,0 90,30 110,10"></path>
+          <path d="M85,10 A5,5 0 1,1 95,10 A5,5 0 1,1 85,10" fill="none"></path>
         </svg>
-        <div class="divider-line r"></div>
       </div>
-
-      <!-- Tên chủ nhân — hero element -->
-      <div class="protagonist" style="margin-top: 8px;">
-        <p class="invite-sub" style="margin-bottom:14px;">đến tham dự và chung vui trong ngày lễ tốt nghiệp của</p>
-        <div class="protagonist-name">Sang</div>
+      <div class="mb-4">
+        <p class="font-serif text-lg font-semibold tracking-wide uppercase">AT: 09:00 AM</p>
+        <p class="text-sm sm:text-base">Thứ Sáu, Ngày 26 Tháng 6 Năm 2026</p>
       </div>
-
-      <!-- Phân cách mảnh -->
-      <div class="divider">
-        <div class="divider-line"></div>
-        <svg width="20" height="8" viewBox="0 0 20 8" fill="none">
-          <circle cx="10" cy="4" r="1.8" fill="#BF9540" opacity="0.55" />
-          <circle cx="3" cy="4" r="1.1" fill="#BF9540" opacity="0.3" />
-          <circle cx="17" cy="4" r="1.1" fill="#BF9540" opacity="0.3" />
+      <div class="max-w-sm mx-auto mb-6">
+        <p class="italic text-xs sm:text-sm leading-relaxed opacity-90">
+          "Sự hiện diện của bạn là niềm vui và động lực lớn nhất trong ngày trọng đại này."
+        </p>
+      </div>
+      <div class="divider"></div>
+      <div class="flex items-center justify-center space-x-2 text-earthy">
+        <svg class="h-4 w-4 sm:h-5 sm:w-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
         </svg>
-        <div class="divider-line r"></div>
+        <address class="not-italic font-serif text-sm">
+          <div class="flex flex-col text-left">
+            <span class="font-semibold text-sm sm:text-base">Thu Duc Campus</span>
+            <span class="text-[10px] sm:text-xs opacity-80 mt-0.5">Phân khu Đào tạo E1 Khu Công nghệ cao P. Tăng Nhơn Phú, TP.HCM</span>
+          </div>
+        </address>
       </div>
-
-      <!-- Chi tiết sự kiện -->
-      <div class="details-wrap">
-        <div class="detail-cell">
-          <p class="dc-label">Thời gian</p>
-          <p class="dc-value">09:00</p>
-          <p class="dc-sub">Thứ Sáu<br>26 · 06 · 2026</p>
-        </div>
-        <div class="detail-cell">
-          <p class="dc-label">Địa điểm</p>
-          <p class="dc-value">Thu Duc Campus</p>
-          <p class="dc-sub">Phân khu Đào tạo E1<br>Khu Công nghệ cao<br>P. Tăng Nhơn Phú, TP.HCM</p>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- CHÂN POSTER -->
-    <div class="footer">
-      <p class="footer-quote">
-        Sự hiện diện của mọi người<br>là niềm vinh hạnh lớn nhất của Sang.
-        <span>With love &amp; gratitude</span>
-      </p>
-    </div>
-
-  </div>
+    </section>
+    <!-- END: Event Details -->
+  </main>
+  <!-- END: Invitation Card Container -->
 
   <!-- NÚT TẢI -->
   <button id="downloadBtn" class="btn-download">
-    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 16 16">
-      <path
-        d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-      <path
-        d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+      <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+      <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
     </svg>
     Lưu thư mời
   </button>
@@ -668,11 +240,10 @@
         btn.disabled = true;
         guestInput.style.borderBottom = 'none';
 
-        // Ẩn khung & góc trang trí (chúng là position:absolute, html2canvas vẫn render)
         html2canvas(poster, {
           scale: 3,
           useCORS: true,
-          backgroundColor: '#F8F4EB',
+          backgroundColor: '#fcf9f5',
           logging: false
         }).then(canvas => {
           guestInput.style.borderBottom = origBorder;
@@ -680,10 +251,11 @@
           link.href = canvas.toDataURL('image/png');
           const safeName = guestInput.value
             .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-            .replace(/\s+/g, '_');
+            .replace(/\s+/g, '_')
+            .replace(/\//g, '');
           link.download = `ThuMoi_TotNghiep_${safeName}.png`;
           link.click();
-          btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 16 16"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg> Lưu thư mời`;
+          btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg> Lưu thư mời`;
           btn.disabled = false;
         }).catch(() => {
           guestInput.style.borderBottom = origBorder;
@@ -695,5 +267,4 @@
     });
   </script>
 </body>
-
 </html>
