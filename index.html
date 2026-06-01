@@ -318,10 +318,11 @@
       const honorific = honorificInput.value.normalize('NFC');
 
       const data = name + '|' + honorific;
-      const base64 = btoa(encodeURIComponent(data));
+      const bytes = new TextEncoder().encode(data);
+      const base64 = btoa(String.fromCharCode(...bytes));
 
       let basePath = window.location.origin + window.location.pathname.replace('index.html', '').replace(/\/$/, '');
-      const link = basePath + '/poster.html?g=' + base64;
+      const link = basePath + '/poster.html?g=' + encodeURIComponent(base64);
 
       guests.unshift({ name, honorific, link });
       saveGuests();
