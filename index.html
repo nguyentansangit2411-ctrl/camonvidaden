@@ -211,12 +211,13 @@
           <option value="Chú">Chú</option>
           <option value="Cô">Cô</option>
           <option value="Em">Em</option>
-          <option value="Anh Chị Bạn Trong Động Cầu Lông NTL">Anh Chị Bạn Trong Động Cầu Lông NTL</option>
+          <option value="Anh Chị Bạn Trong Động Cầu Lông Nơ Trang Long">Anh Chị Bạn Trong Động Cầu Lông Nơ Trang Long
+          </option>
         </select>
       </div>
       <div class="form-group">
         <label for="name">Họ và tên</label>
-        <input type="text" id="name" required placeholder="Ví dụ: Nguyễn Văn A">
+        <input type="text" id="name" placeholder="Ví dụ: Nguyễn Văn A (có thể để trống)">
       </div>
       <button type="submit">Thêm khách mời</button>
     </form>
@@ -317,25 +318,23 @@
       const name = nameInput.value.trim();
       const honorific = honorificInput.value;
 
-      if (name) {
-        const data = name + '|' + honorific;
-        const base64 = btoa(encodeURIComponent(data));
+      const data = name + '|' + honorific;
+      const base64 = btoa(encodeURIComponent(data));
 
-        let basePath = window.location.origin + window.location.pathname.replace('index.html', '').replace(/\/$/, '');
-        const link = basePath + '/poster.html?g=' + base64;
+      let basePath = window.location.origin + window.location.pathname.replace('index.html', '').replace(/\/$/, '');
+      const link = basePath + '/poster.html?g=' + base64;
 
-        guests.unshift({ name, honorific, link });
-        saveGuests();
-        renderGuests();
+      guests.unshift({ name, honorific, link });
+      saveGuests();
+      renderGuests();
 
-        nameInput.value = '';
-        nameInput.focus();
-      }
+      nameInput.value = '';
+      nameInput.focus();
     });
 
     document.getElementById('copyAllBtn').addEventListener('click', () => {
       if (guests.length === 0) return alert('Chưa có danh sách khách mời.');
-      const text = guests.map(g => `${g.honorific} ${g.name}:\n${g.link}`).join('\n\n');
+      const text = guests.map(g => `${g.honorific}${g.name ? ' ' + g.name : ''}:\n${g.link}`).join('\n\n');
       navigator.clipboard.writeText(text).then(() => {
         alert('Đã copy toàn bộ danh sách khách mời vào clipboard!');
       });
