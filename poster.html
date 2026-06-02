@@ -70,8 +70,13 @@
       width: 80px;
       height: 1px;
       background-color: #7a5c48;
-      margin: 1.5rem auto;
+      margin: 1rem auto;
       opacity: 0.4;
+    }
+    @media (min-width: 640px) {
+      .divider {
+        margin: 1.5rem auto;
+      }
     }
 
     /* Button styles */
@@ -112,9 +117,14 @@
       transition: background 0.3s, border-color 0.3s;
       font-family: 'Playfair Display', serif !important;
       font-style: italic;
-      font-size: 1.75rem;
+      font-size: 1.25rem;
       font-weight: 400;
       letter-spacing: 0.02em;
+    }
+    @media (min-width: 640px) {
+      #guest-name {
+        font-size: 1.75rem;
+      }
     }
 
     #guest-name:focus {
@@ -129,7 +139,7 @@
 
   <!-- BEGIN: Invitation Card Container -->
   <main id="poster"
-    class="relative w-full max-w-[600px] aspect-[1/1.414] bg-[#fcf9f5] shadow-2xl overflow-hidden p-8 sm:p-12 flex flex-col items-center border border-stone-200"
+    class="relative w-full max-w-[600px] aspect-[1/1.414] bg-[#fcf9f5] shadow-2xl overflow-hidden p-5 sm:p-12 flex flex-col items-center border border-stone-200"
     data-purpose="invitation-container">
     <!-- BEGIN: Decorative Floral Corners -->
     <div class="absolute top-0 right-0 w-32 h-48 opacity-40 pointer-events-none transform translate-x-4 -translate-y-4">
@@ -150,22 +160,22 @@
     <!-- END: Decorative Floral Corners -->
 
     <!-- BEGIN: Header Section -->
-    <header class="text-center z-10 mt-6 sm:mt-8 mb-8 sm:mb-12">
-      <h1 class="font-script text-4xl sm:text-5xl mb-4 text-earthy">Thư mời dự Lễ Tốt Nghiệp</h1>
-      <p class="font-serif uppercase tracking-widest text-base sm:text-lg">JUNE 2026</p>
+    <header class="text-center z-10 mt-3 sm:mt-8 mb-4 sm:mb-12">
+      <h1 class="font-script text-[2rem] sm:text-5xl leading-tight mb-2 sm:mb-4 text-earthy">Thư mời dự Lễ Tốt Nghiệp</h1>
+      <p class="font-serif uppercase tracking-widest text-xs sm:text-lg">JUNE 2026</p>
     </header>
 
-    <section class="mb-8 text-center px-4 w-full flex flex-col items-center gap-2">
-      <p class="font-serif text-sm italic text-earthy">Kính mời:</p>
+    <section class="mb-4 sm:mb-8 text-center px-4 w-full flex flex-col items-center gap-1 sm:gap-2">
+      <p class="font-serif text-[10px] sm:text-sm italic text-earthy">Kính mời:</p>
       <textarea id="guest-name" rows="1" readonly
-        class="bg-transparent border-0 text-center w-full max-w-[85%] text-lg sm:text-xl font-serif outline-none text-earthy focus:ring-0 p-1"
+        class="bg-transparent border-0 text-center w-full max-w-[95%] sm:max-w-[85%] font-serif outline-none text-earthy focus:ring-0 p-1"
         placeholder="Nhập tên khách mời...">Anh / Chị / Bạn</textarea>
     </section>
     <!-- END: Header Section -->
 
     <!-- BEGIN: Calendar Layout -->
-    <section class="w-full max-w-xs mb-8 sm:mb-10 text-xs font-light tracking-tighter" data-purpose="calendar-grid">
-      <div class="grid grid-cols-7 text-center mb-4 font-normal text-earthy opacity-80">
+    <section class="w-full max-w-[200px] sm:max-w-xs mb-5 sm:mb-10 text-[9px] sm:text-xs font-light tracking-tighter" data-purpose="calendar-grid">
+      <div class="grid grid-cols-7 text-center mb-2 sm:mb-4 font-normal text-earthy opacity-80">
         <div class="">SUN</div>
         <div class="">MON</div>
         <div class="">TUE</div>
@@ -174,7 +184,7 @@
         <div class="">FRI</div>
         <div class="">SAT</div>
       </div>
-      <div class="grid grid-cols-7 text-center gap-y-4 text-sm font-serif">
+      <div class="grid grid-cols-7 text-center gap-y-2 sm:gap-y-4 text-[11px] sm:text-sm font-serif">
         <div class="text-transparent">0</div>
         <div class="">1</div>
         <div class="">2</div>
@@ -215,35 +225,35 @@
     <!-- END: Calendar Layout -->
 
     <!-- BEGIN: Event Details -->
-    <section class="text-center z-10 w-full px-4 mt-auto">
+    <section class="text-center z-10 w-full px-2 sm:px-4 mt-auto">
       <!-- Swirl Decoration -->
-      <div class="flex justify-end mr-12 mb-2">
-        <svg class="w-16 h-8 opacity-40" fill="none" stroke="#7a5c48" stroke-width="1.5" viewBox="0 0 100 40">
+      <div class="flex justify-end mr-6 sm:mr-12 mb-1 sm:mb-2">
+        <svg class="w-10 h-5 sm:w-16 sm:h-8 opacity-40" fill="none" stroke="#7a5c48" stroke-width="1.5" viewBox="0 0 100 40">
           <path d="M10,20 C30,10 40,40 60,20 C80,0 90,30 110,10"></path>
           <path d="M85,10 A5,5 0 1,1 95,10 A5,5 0 1,1 85,10" fill="none"></path>
         </svg>
       </div>
-      <div class="mb-4">
-        <p class="font-serif text-lg font-semibold tracking-wide uppercase">AT: 09:00 AM</p>
-        <p class="text-sm sm:text-base">Thứ Sáu, Ngày 26 Tháng 6 Năm 2026</p>
+      <div class="mb-2 sm:mb-4">
+        <p class="font-serif text-sm sm:text-lg font-semibold tracking-wide uppercase">AT: 09:00 AM</p>
+        <p class="text-[10px] sm:text-base mt-0.5 sm:mt-0">Thứ Sáu, Ngày 26 Tháng 6 Năm 2026</p>
       </div>
-      <div class="max-w-sm mx-auto mb-6">
-        <p class="italic text-xs sm:text-sm leading-relaxed opacity-90">
+      <div class="max-w-xs sm:max-w-sm mx-auto mb-3 sm:mb-6">
+        <p class="italic text-[9px] sm:text-sm leading-relaxed opacity-90">
           "Sự hiện diện của <span id="quote-honorific">bạn</span> là niềm vui và động lực lớn nhất trong ngày trọng đại
           này."
         </p>
       </div>
       <div class="divider"></div>
-      <div class="flex items-center justify-center space-x-2 text-earthy">
-        <svg class="h-4 w-4 sm:h-5 sm:w-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <div class="flex items-center justify-center space-x-1.5 sm:space-x-2 text-earthy">
+        <svg class="h-3.5 w-3.5 sm:h-5 sm:w-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z">
           </path>
         </svg>
         <address class="not-italic font-serif text-sm">
           <div class="flex flex-col text-left">
-            <span class="font-semibold text-sm sm:text-base">Thu Duc Campus</span>
-            <span class="text-[10px] sm:text-xs opacity-80 mt-0.5">Phân khu Đào tạo E1 Khu Công nghệ cao P. Tăng Nhơn
+            <span class="font-semibold text-xs sm:text-base">Thu Duc Campus</span>
+            <span class="text-[8px] sm:text-xs opacity-80 mt-0.5">Phân khu Đào tạo E1 Khu Công nghệ cao P. Tăng Nhơn
               Phú, TP.HCM</span>
           </div>
         </address>
